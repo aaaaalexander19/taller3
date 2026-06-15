@@ -2,10 +2,10 @@
 **Universidad ESAN** Este repositorio contiene la implementación en Go de estructuras de datos lineales y no lineales aplicadas a datasets reales, correspondiente al Taller 3.
 
 ##  Integrantes del Equipo
-* **[Tu Nombre y Apellido]** - Ejercicio 4.1: Pilas (Stack)
-* **[Nombre de tu compañero, ej. Julio o Diego]** - Ejercicio 4.2: Colas (Queue)
-* **[Nombre de tu compañera, ej. Zulema]** - Ejercicio 4.3: Listas Enlazadas (LRU Cache)
-* **[Nombre de tu compañero, ej. Deivis]** - Ejercicio 4.4: Árboles Binarios (AVL)
+* **Farid Alexander Poma Huaman** - Ejercicio 4.1: Pilas (Stack)
+* **Engels Alessandro Quispe Hernandez** - Ejercicio 4.2: Colas (Queue)
+* **Julio Lorenzo Santana Mendoza** - Ejercicio 4.3: Listas Enlazadas (LRU Cache)
+* **Fabrizio Gabriel Siliman Roman** - Ejercicio 4.4: Árboles Binarios (AVL)
 
 ---
 
