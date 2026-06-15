@@ -41,13 +41,13 @@ Para compilar, ejecutar y probar este proyecto localmente, siga los pasos a cont
   go mod tidy
 2. Preparación de los Datos
 Descargue los datasets listados en la sección anterior.
-
 Ubique el archivo de texto correspondiente dentro del directorio local respectivo (por ejemplo, coloque amzn.us.txt en la raíz del proyecto o en la carpeta /pilas/ según se encuentre parametrizado el argumento de ruta en el archivo principal).
 
-3. Ejecución del Programa Principal
-El archivo main.go actúa como la compuerta central encargada de instanciar y ejecutar secuencialmente cada uno de los submódulos integrados por el grupo.
+3. Ejecución con Datos Reales (Pruebas de Integración)
+Para evaluar los algoritmos procesando los archivos masivos reales y visualizar los resultados tabulados en la consola, cada integrante ha diseñado pruebas de integración específicas:
+Ejercicio 4.1 - Pilas (Stock Span):
 * ```bash
-  go run main.go
+  go test -v -run TestIntegracionDatasetReal ./pilas
 4. Pruebas Unitarias y Cobertura (Testing)Las implementaciones de software incluyen suites de pruebas exhaustivas parametrizadas para validar casos normales, límites (estructuras de datos vacías o con un solo elemento) y aserciones de manejo de errores. Para certificar el estándar de cobertura exigido ($\geq 70\%$):
 * ```bash
   # Ejecutar todas las pruebas unitarias del repositorio simultáneamente
