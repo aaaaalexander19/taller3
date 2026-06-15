@@ -66,7 +66,7 @@ Cada integrante expone de manera individual la sustentación técnica de su cód
 
 * Ejercicio 4.1 (Pilas): https://youtu.be/37XYDGvqGE4
 
-* Ejercicio 4.2 (Colas): [Enlace al video explicativo de Rate Limiter]
+* Ejercicio 4.2 (Colas): https://youtu.be/v8reuBoihhI
 
 * Ejercicio 4.3 (Listas): https://youtu.be/NHgsPvbMgPc
 
