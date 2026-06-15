@@ -25,15 +25,26 @@ Por políticas del proyecto, los datasets masivos no se suben a Git. A continuac
 
 1. **Ejercicio 4.1 - Pilas (Stock Span):** [Huge Stock Market Dataset - Kaggle](https://www.kaggle.com/datasets/borismarjanovic/price-volume-data-for-all-us-stocks-etfs) *(Archivo utilizado: amzn.us.txt)*
 2. **Ejercicio 4.2 - Colas (Rate Limiter):** [Web Server Access Logs - Kaggle](https://www.kaggle.com/datasets/eliasdabbas/web-server-access-logs)
-3. **Ejercicio 4.3 - Listas (Caché LRU):** [MovieLens Datasets - GroupLens](https://grouplens.org/datasets/movielens/) *(Archivo utilizado: ratings.csv)*
-4. **Ejercicio 4.4 - Árboles (Índice AVL):** [MovieLens Datasets - GroupLens](https://grouplens.org/datasets/movielens/) *(Archivos utilizados: movies.csv y ratings.csv)*
+3. **Ejercicio 4.3 - Listas (Caché LRU):** [MovieLens Datasets - GroupLens](https://grouplens.org/datasets/movielens/)
+4. **Ejercicio 4.4 - Árboles (Índice AVL):** [MovieLens Datasets - GroupLens](https://grouplens.org/datasets/movielens/)
 
 ---
 
-##  Instrucciones de Ejecución
-Asegúrate de tener instalado **Go 1.21+**. 
+##  Instrucciones de Ejecución y Pruebas
+Para compilar, ejecutar y probar este proyecto localmente, siga los pasos a continuación garantizando que se cumplan las especificaciones del taller:
 
-Para ejecutar las pruebas unitarias y verificar la cobertura del código de cualquier estructura, navega a su carpeta y ejecuta:
-```bash
-go test -v ./pilas      # Reemplazar "pilas" por la carpeta correspondiente
-go test -cover ./pilas  # Para ver el porcentaje de cobertura
+### 1. Pre-requisitos e Inicialización del Proyecto
+* Verifique tener instalado **Go 1.21** o superior.
+* Si está configurando el proyecto por primera vez o desde una carpeta vacía, inicialice el módulo con el nombre oficial del proyecto y sincronice las dependencias nativas:
+  ```bash
+  go mod init taller3
+  go mod tidy
+2. Preparación de los Datos
+Descargue los datasets listados en la sección anterior.
+
+Ubique el archivo de texto correspondiente dentro del directorio local respectivo (por ejemplo, coloque amzn.us.txt en la raíz del proyecto o en la carpeta /pilas/ según se encuentre parametrizado el argumento de ruta en el archivo principal).
+
+3. Ejecución del Programa Principal
+El archivo main.go actúa como la compuerta central encargada de instanciar y ejecutar secuencialmente cada uno de los submódulos integrados por el grupo.
+  ```bash
+  go run main.go
