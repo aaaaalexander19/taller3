@@ -70,7 +70,7 @@ Cada integrante expone de manera individual la sustentación técnica de su cód
 
 * Ejercicio 4.3 (Listas): https://youtu.be/NHgsPvbMgPc
 
-* Ejercicio 4.4 (Árboles): [Enlace al video explicativo de Índice AVL]
+* Ejercicio 4.4 (Árboles): https://www.youtube.com/watch?v=iSVDwVFyYRs
 
 ## Declaración de uso de Inteligencia Artificial
 
