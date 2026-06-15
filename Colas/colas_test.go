@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"os"
 	"testing"
 	"time"
 )
@@ -101,8 +103,6 @@ func TestCola_Len(t *testing.T) {
 	}
 }
 
-// --- Pruebas para la lógica del Rate Limiter ---
-
 func TestParsearLinea(t *testing.T) {
 	// Caso normal
 	linea := `192.168.1.1 - - [08/Jun/2026:10:00:00 -0500] "GET / HTTP/1.1" 200 1234`
@@ -194,6 +194,39 @@ func BenchmarkCola_Dequeue(b *testing.B) {
 	}
 }
 
+func BenchmarkCola_Enqueue_Sizes(b *testing.B) {
+	sizes := []int{1000, 10000, 100000, 1000000}
+	for _, n := range sizes {
+		b.Run(fmt.Sprintf("n=%d", n), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				c := &Cola{}
+				for j := 0; j < n; j++ {
+					c.Enqueue(int64(j))
+				}
+			}
+		})
+	}
+}
+
+func BenchmarkCola_Dequeue_Sizes(b *testing.B) {
+	sizes := []int{1000, 10000, 100000, 1000000}
+	for _, n := range sizes {
+		b.Run(fmt.Sprintf("n=%d", n), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				b.StopTimer()
+				c := &Cola{}
+				for j := 0; j < n; j++ {
+					c.Enqueue(int64(j))
+				}
+				b.StartTimer()
+				for j := 0; j < n; j++ {
+					c.Dequeue()
+				}
+			}
+		})
+	}
+}
+
 func BenchmarkPermitirPeticion(b *testing.B) {
 	colas := make(map[string]*Cola)
 	ip := "1.2.3.4"
@@ -205,5 +238,48 @@ func BenchmarkPermitirPeticion(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		// Simulamos el paso del tiempo para que no todas las peticiones se rechacen
 		PermitirPeticion(colas, ip, ts+int64(i), M, T)
+	}
+}
+
+func TestMainFunc(t *testing.T) {
+	// Crear un archivo temporal "dataColas.log" para la prueba de main
+	// de modo que la función main() lo lea sin errores y podamos probar su lógica
+	contenidoLog := `192.168.1.1 - - [08/Jun/2026:10:00:00 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:01 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.2 - - [08/Jun/2026:10:00:02 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:03 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:04 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:05 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:06 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:07 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:08 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:09 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:10 -0500] "GET / HTTP/1.1" 200 1234
+192.168.1.1 - - [08/Jun/2026:10:00:11 -0500] "GET / HTTP/1.1" 200 1234
+linea mal formada que debe ser ignorada
+`
+	err := os.WriteFile("dataColas.log", []byte(contenidoLog), 0644)
+	if err != nil {
+		t.Fatalf("No se pudo crear el archivo de prueba: %v", err)
+	}
+	defer os.Remove("dataColas.log")
+
+	// Capturamos stdout para evitar ensuciar la salida de go test
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	// Llamamos a main()
+	main()
+
+	// Restauramos stdout
+	w.Close()
+	os.Stdout = oldStdout
+
+	// Solo confirmamos que no hay panic
+	var buf [1024]byte
+	_, err = r.Read(buf[:])
+	if err != nil && err.Error() != "EOF" {
+		t.Errorf("Error al leer salida de main: %v", err)
 	}
 }
