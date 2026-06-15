@@ -14,11 +14,10 @@ type Nodo struct {
 	next *Nodo
 }
 
-// Cola ahora usa punteros al primer y último nodo, garantizando O(1)
 type Cola struct {
-	head *Nodo // Frente de la cola (por donde salen)
-	tail *Nodo // Final de la cola (por donde entran)
-	size int   // Mantenemos el tamaño para que Len() sea O(1)
+	head *Nodo
+	tail *Nodo
+	size int // Mantenemos el tamaño para que Len() sea O(1)
 }
 
 func (c *Cola) Enqueue(ts int64) {
@@ -29,7 +28,6 @@ func (c *Cola) Enqueue(ts int64) {
 		c.head = nuevoNodo
 		c.tail = nuevoNodo
 	} else {
-		// Lo agregamos al final y actualizamos la cola
 		c.tail.next = nuevoNodo
 		c.tail = nuevoNodo
 	}
@@ -42,13 +40,11 @@ func (c *Cola) Dequeue() (int64, bool) {
 	}
 
 	val := c.head.ts
-	// Movemos la cabeza al siguiente nodo.
-	// El nodo viejo queda sin referencias y el "Garbage Collector" de Go lo elimina.
 	c.head = c.head.next
 	c.size--
 
 	if c.size == 0 {
-		c.tail = nil // Seguridad extra si la cola quedó vacía
+		c.tail = nil //Es solo una verificación extra---
 	}
 
 	return val, true
@@ -65,7 +61,6 @@ func (c *Cola) Len() int {
 	return c.size
 }
 
-// Lógica intacta: El Rate Limiter no necesita saber CÓMO funciona la cola por dentro
 func PermitirPeticion(colas map[string]*Cola, ip string, ts int64, M int, T int64) bool {
 	colaIP, existe := colas[ip]
 	if !existe {
