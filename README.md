@@ -46,5 +46,35 @@ Ubique el archivo de texto correspondiente dentro del directorio local respectiv
 
 3. Ejecución del Programa Principal
 El archivo main.go actúa como la compuerta central encargada de instanciar y ejecutar secuencialmente cada uno de los submódulos integrados por el grupo.
-  ```bash
+* ```bash
   go run main.go
+4. Pruebas Unitarias y Cobertura (Testing)Las implementaciones de software incluyen suites de pruebas exhaustivas parametrizadas para validar casos normales, límites (estructuras de datos vacías o con un solo elemento) y aserciones de manejo de errores. Para certificar el estándar de cobertura exigido ($\geq 70\%$):
+* ```bash
+  # Ejecutar todas las pruebas unitarias del repositorio simultáneamente
+  go test -v ./...
+  # Analizar la tasa de cobertura de código por módulo
+  go test -cover ./...
+  # Ejecutar de forma aislada las pruebas del módulo de Pilas (Ejercicio 4.1)
+  go test -v ./pilas
+  go test -cover ./pilas
+5. Evaluación de Benchmarks (Performance)
+Para validar de forma empírica la inercia del tiempo de respuesta y las asignaciones del recolector de basura en el Heap:
+* ```bash
+  go test -bench . -benchmem ./...
+## Enlaces a Videos Explicativos (YouTube)
+Cada integrante expone de manera individual la sustentación técnica de su código y la correcta interpretación de los resultados:
+
+* Ejercicio 4.1 (Pilas): [Enlace al video explicativo de Stock Span]
+
+* Ejercicio 4.2 (Colas): [Enlace al video explicativo de Rate Limiter]
+
+* Ejercicio 4.3 (Listas): [Enlace al video explicativo de Caché LRU]
+
+* Ejercicio 4.4 (Árboles): [Enlace al video explicativo de Índice AVL]
+
+## Declaración de Ética y Código de Honor
+En concordancia estricta con las pautas de Integridad Académica establecidas por la institución:
+
+* Originalidad: Toda la lógica de control, los algoritmos de las estructuras dinámicas de datos y las pruebas automatizadas han sido programados de forma autónoma por los integrantes de este equipo de trabajo.
+
+* Uso Responsable de Inteligencia Artificial: Se emplearon modelos de lenguaje predictivo exclusivamente como herramientas de soporte pedagógico para la definición de plantillas estructurales y la documentación base de datos de prueba en la suite de testing. La revisión lógica paso a paso, el manejo seguro de tipos de datos en Go y el análisis de la complejidad asintótica fueron auditados íntegramente por el equipo operativo.
