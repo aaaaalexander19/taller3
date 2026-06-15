@@ -64,7 +64,7 @@ Para validar de forma empírica la inercia del tiempo de respuesta y las asignac
 ## Enlaces a Videos Explicativos (YouTube)
 Cada integrante expone de manera individual la sustentación técnica de su código y la correcta interpretación de los resultados:
 
-* Ejercicio 4.1 (Pilas): [Enlace al video explicativo de Stock Span]
+* Ejercicio 4.1 (Pilas): https://youtu.be/37XYDGvqGE4
 
 * Ejercicio 4.2 (Colas): [Enlace al video explicativo de Rate Limiter]
 
