@@ -72,9 +72,19 @@ Cada integrante expone de manera individual la sustentación técnica de su cód
 
 * Ejercicio 4.4 (Árboles): [Enlace al video explicativo de Índice AVL]
 
+## Declaración de uso de Inteligencia Artificial
+
+Para la realización de este taller, se utilizó asistencia de Inteligencia Artificial (Gemini) en el siguiente aspecto específico:
+
+Testing (colas_test.go): Se empleó asistencia de IA para la generación estructurada de las pruebas automatizadas (unitarias y benchmarks), específicamente para las funciones main(), ParsearLinea() y PermitirPeticion(), con el objetivo de establecer una suite de testing robusta que superara el 70% de cobertura (coverage) requerido en la rúbrica.
+
+Lógica principal (colas.go): El uso de IA se limitó estrictamente a la asistencia en la verificación de funciones y depuración (debugging) para solucionar errores lógicos puntuales, manteniendo la autoría del equipo sobre la estructura de datos.
+
+Validación: Todo el código sugerido o modificado por la IA fue leído, analizado, refactorizado y comprendido por los autores. La validación empírica se realizó ejecutando go test -v, go test -cover y comprobando manualmente que el resultado de main() sobre el archivo dataColas.log (recorte del dataset original) fuera el esperado y respetara  la complejidad algorítmica solicitada (O(1)).
+
 ## Declaración de Ética y Código de Honor
 En concordancia estricta con las pautas de Integridad Académica establecidas por la institución:
 
-* Originalidad: Toda la lógica de control, los algoritmos de las estructuras dinámicas de datos y las pruebas automatizadas han sido programados de forma autónoma por los integrantes de este equipo de trabajo.
+* Originalidad: Toda la lógica de control y los algoritmos fundamentales de las estructuras dinámicas de datos han sido pensados, diseñados y programados por los integrantes de este equipo de trabajo
 
-* Uso Responsable de Inteligencia Artificial: Se emplearon modelos de lenguaje predictivo exclusivamente como herramientas de soporte pedagógico para la definición de plantillas estructurales y la documentación base de datos de prueba en la suite de testing. La revisión lógica paso a paso, el manejo seguro de tipos de datos en Go y el análisis de la complejidad asintótica fueron auditados íntegramente por el equipo operativo.
+* Uso Responsable de Inteligencia Artificial:  Se emplearon modelos de lenguaje predictivo exclusivamente como herramientas de soporte pedagógico (generación de la base de la suite de pruebas y asistencia en depuración). La revisión lógica paso a paso, el manejo seguro de tipos de datos en Go, la adaptación al contexto del problema y el análisis de la complejidad asintótica fueron auditados íntegramente por el equipo operativo, quienes asumen total autoría y capacidad de sustentar cada línea del proyecto
