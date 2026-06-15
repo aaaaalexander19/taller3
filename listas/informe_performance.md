@@ -4,7 +4,6 @@
 
 **Código:** 25100130
 ## 1. Especificaciones del Entorno de Medición
-[cite_start]*Como lo exige la rúbrica, aquí se detalla el entorno de hardware y software donde se ejecutaron las pruebas de rendimiento[cite: 156]:*
 
 | Componente | Detalle |
 | :--- | :--- |
