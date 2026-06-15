@@ -68,7 +68,7 @@ Cada integrante expone de manera individual la sustentación técnica de su cód
 
 * Ejercicio 4.2 (Colas): [Enlace al video explicativo de Rate Limiter]
 
-* Ejercicio 4.3 (Listas): [Enlace al video explicativo de Caché LRU]
+* Ejercicio 4.3 (Listas): https://youtu.be/NHgsPvbMgPc
 
 * Ejercicio 4.4 (Árboles): [Enlace al video explicativo de Índice AVL]
 
